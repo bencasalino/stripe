@@ -62,3 +62,5 @@ function stripeTokenHandler(token) {
 
   form.submit();
 }
+
+

@@ -22,7 +22,7 @@ app.get("/bill", (request, response) => {
 });
 
 app.post("/charge", (request, response) => {
-  charge(request.body.amount * 100, request.body.stripeToken)
+  charge(request.body.amount * 100, request.body.stripeToken, request.body.service)
     .then(charge => {
       response.render("success", { amount: charge.amount / 100 });
     })
@@ -31,13 +31,14 @@ app.post("/charge", (request, response) => {
     });
 });
 
-function charge(amount, token) {
+function charge(amount, token, service) {
   return new Promise((resolve, reject) => {
     stripe.charges.create(
       {
         amount: amount,
         currency: "usd",
-        source: token
+        source: token,
+        description: service
       },
       (error, charge) => {
         if (error) {
