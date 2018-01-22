@@ -1,7 +1,5 @@
-// require in a dotenv file 
-require('dotenv').config()
-// public key
 var stripePublicKey = "pk_test_mhBOgEaNnx87UY2g1oi93vbM";
+
 
 
 const stripe = Stripe(stripePublicKey);
