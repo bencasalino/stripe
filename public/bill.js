@@ -1,6 +1,6 @@
-
+require('dotenv').config()
 var stripePublicKey = "pk_test_mhBOgEaNnx87UY2g1oi93vbM";
-var stripe = Stripe(stripePublicKey);
+var stripe = Stripe(process.env.STRIPE_KEY);
 
 
 var elements = stripe.elements();
